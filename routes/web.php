@@ -14,16 +14,30 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
+    $user = auth()->user();
+    $isAdmin = $user->hasRole('Admin');
+
     $notices = \App\Models\Notice::where('is_active', true)
         ->latest('published_at')
         ->limit(10)
         ->get();
     
+    $itemQuery = \App\Models\ItemMaster::query();
+    $locationQuery = \App\Models\Location::query();
+    $userQuery = \App\Models\User::query();
+
+    if (!$isAdmin) {
+        $itemQuery->where('location_id', $user->location_id);
+        $locationQuery->where('id', $user->location_id);
+        // For users, maybe only count users in the same location
+        $userQuery->where('location_id', $user->location_id);
+    }
+
     $stats = [
-        'items' => \App\Models\ItemMaster::count(),
-        'locations' => \App\Models\Location::count(),
-        'users' => \App\Models\User::count(),
-        'last_item' => \App\Models\ItemMaster::latest()->first(),
+        'items' => $itemQuery->count(),
+        'locations' => $locationQuery->count(),
+        'users' => $userQuery->count(),
+        'last_item' => $itemQuery->latest()->first(),
     ];
 
     return view('dashboard', compact('notices', 'stats'));

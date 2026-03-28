@@ -97,8 +97,14 @@ class ItemMasterController extends Controller implements HasMiddleware
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = ItemMaster::with('location')->select('item_masters.*');
-            return \Yajra\DataTables\Facades\DataTables::of($data)
+            $query = ItemMaster::with('location')->select('item_masters.*');
+
+            // Apply location scoping for non-admins
+            if (!auth()->user()->hasRole('Admin')) {
+                $query->where('location_id', auth()->user()->location_id);
+            }
+
+            return \Yajra\DataTables\Facades\DataTables::of($query)
                 ->addIndexColumn()
                 ->addColumn('location_name', function($row){
                     return $row->location->name;
@@ -129,7 +135,11 @@ class ItemMasterController extends Controller implements HasMiddleware
      */
     public function create()
     {
-        $locations = Location::all();
+        $user = auth()->user();
+        $locations = $user->hasRole('Admin') 
+            ? Location::all() 
+            : Location::where('id', $user->location_id)->get();
+            
         $uoms = ['kg', 'pc', 'pcs', 'set', 'sets'];
         return view('item_masters.create', compact('locations', 'uoms'));
     }
@@ -139,8 +149,11 @@ class ItemMasterController extends Controller implements HasMiddleware
      */
     public function store(Request $request)
     {
+        $user = auth()->user();
+        $locConstraint = $user->hasRole('Admin') ? 'exists:locations,id' : 'in:'.$user->location_id;
+
         $request->validate([
-            'location_id' => 'required|exists:locations,id',
+            'location_id' => 'required|' . $locConstraint,
             'code' => 'required|string|unique:item_masters,code|max:255',
             'serial_no' => 'nullable|string|max:255',
             'equipment' => 'required|string',
@@ -160,6 +173,9 @@ class ItemMasterController extends Controller implements HasMiddleware
      */
     public function show(ItemMaster $itemMaster)
     {
+        if (!auth()->user()->hasRole('Admin') && $itemMaster->location_id !== auth()->user()->location_id) {
+            abort(403, 'Unauthorized access to this location\'s items.');
+        }
         return view('item_masters.show', compact('itemMaster'));
     }
 
@@ -168,7 +184,15 @@ class ItemMasterController extends Controller implements HasMiddleware
      */
     public function edit(ItemMaster $itemMaster)
     {
-        $locations = Location::all();
+        $user = auth()->user();
+        if (!$user->hasRole('Admin') && $itemMaster->location_id !== $user->location_id) {
+            abort(403, 'Unauthorized access to this location\'s items.');
+        }
+
+        $locations = $user->hasRole('Admin') 
+            ? Location::all() 
+            : Location::where('id', $user->location_id)->get();
+            
         $uoms = ['kg', 'pc', 'pcs', 'set', 'sets'];
         return view('item_masters.edit', compact('itemMaster', 'locations', 'uoms'));
     }
@@ -178,8 +202,15 @@ class ItemMasterController extends Controller implements HasMiddleware
      */
     public function update(Request $request, ItemMaster $itemMaster)
     {
+        $user = auth()->user();
+        if (!$user->hasRole('Admin') && $itemMaster->location_id !== $user->location_id) {
+            abort(403, 'Unauthorized access to this location\'s items.');
+        }
+
+        $locConstraint = $user->hasRole('Admin') ? 'exists:locations,id' : 'in:'.$user->location_id;
+
         $request->validate([
-            'location_id' => 'required|exists:locations,id',
+            'location_id' => 'required|' . $locConstraint,
             'code' => 'required|string|unique:item_masters,code,' . $itemMaster->id . '|max:255',
             'serial_no' => 'nullable|string|max:255',
             'equipment' => 'required|string',
@@ -199,6 +230,10 @@ class ItemMasterController extends Controller implements HasMiddleware
      */
     public function destroy(ItemMaster $itemMaster)
     {
+        if (!auth()->user()->hasRole('Admin') && $itemMaster->location_id !== auth()->user()->location_id) {
+            abort(403, 'Unauthorized access to this location\'s items.');
+        }
+        
         $itemMaster->delete();
 
         return redirect()->route('item-masters.index')
