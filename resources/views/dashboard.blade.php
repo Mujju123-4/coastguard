@@ -59,16 +59,27 @@
     <!-- Notice Board Section -->
     <div class="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden mb-8">
         <!-- Header -->
-        <div class="px-6 py-4 bg-teal-700 flex items-center justify-between">
-            <div class="flex items-center text-white">
-                <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
-                    </path>
-                </svg>
-                <h3 class="text-xl font-bold tracking-wide text-black">Notice Board</h3>
+        <div class="px-6 py-4 bg-teal-700 flex items-center justify-between overflow-hidden">
+            <div class="flex items-center text-white flex-1 min-w-0 pr-4">
+                <div class="flex items-center flex-shrink-0">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
+                        </path>
+                    </svg>
+                    <h3 class="text-xl font-bold tracking-wide text-black whitespace-nowrap">Notice Board</h3>
+                </div>
+
+                @if ($notices->isNotEmpty())
+                    <div class="ml-8 overflow-hidden flex-1 relative h-8">
+                        <div class="absolute whitespace-nowrap animate-marquee-text text-red-500 font-black tracking-widest text-sm flex items-center h-full drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.2)]">
+                            <span>{{ $notices->first()->title }}</span>
+                        </div>
+                    </div>
+                @endif
             </div>
-            <div class="flex items-center">
+
+            <div class="flex items-center flex-shrink-0">
                 <span
                     class="text-teal-50 text-xs font-semibold bg-teal-800/50 px-3 py-1 rounded-full border border-teal-600/30">
                     {{ now()->format('d M Y') }}
@@ -255,6 +266,15 @@
 
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
             background: #cbd5e1;
+        }
+
+        @keyframes marquee-text {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .animate-marquee-text {
+            animation: marquee-text 12s linear infinite;
         }
     </style>
 
