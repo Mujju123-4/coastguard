@@ -18,7 +18,15 @@ Route::get('/dashboard', function () {
         ->latest('published_at')
         ->limit(10)
         ->get();
-    return view('dashboard', compact('notices'));
+    
+    $stats = [
+        'items' => \App\Models\ItemMaster::count(),
+        'locations' => \App\Models\Location::count(),
+        'users' => \App\Models\User::count(),
+        'last_item' => \App\Models\ItemMaster::latest()->first(),
+    ];
+
+    return view('dashboard', compact('notices', 'stats'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
