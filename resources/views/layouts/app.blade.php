@@ -11,8 +11,39 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <!-- Tailwind CSS CDN (includes Forms plugin) -->
+        <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+        
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            sans: ['Figtree', 'ui-sans-serif', 'system-ui', 'sans-serif', "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
+                        },
+                        keyframes: {
+                            'pan-image': {
+                                '0%': { transform: 'scale(1) translate(0, 0)' },
+                                '100%': { transform: 'scale(1.1) translate(-2%, -2%)' },
+                            }
+                        },
+                        animation: {
+                            'pan-image': 'pan-image 40s linear infinite alternate',
+                        },
+                    },
+                },
+            }
+        </script>
+
+        <!-- Alpine.js CDN -->
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        
+        <!-- Axios CDN & Setup -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script>
+            window.axios = axios;
+            window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+        </script>
         
         <!-- Favicon -->
         <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">

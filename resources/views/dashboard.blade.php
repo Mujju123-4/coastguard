@@ -1,109 +1,100 @@
 <x-app-layout>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <!-- Dashboard Cards -->
-        <div
-            class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex items-center hover:shadow-md transition-shadow">
-            <div class="p-4 bg-blue-50 text-blue-600 rounded-lg mr-4">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
-                    </path>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 mt-2">
+        <!-- System Stats Cards -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 flex items-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer border-l-4 border-l-indigo-600">
+            <div class="p-4 bg-indigo-50 text-indigo-600 rounded-xl mr-4 group-hover:scale-110 transition-transform duration-300">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
                 </svg>
             </div>
             <div>
-                <p class="text-sm font-medium text-slate-500">Active Personnel</p>
-                <p class="text-2xl font-bold text-slate-800">12,450</p>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Total Personnel</p>
+                <p class="text-2xl font-black text-slate-900">{{ number_format($stats['users']) }}</p>
             </div>
         </div>
-        <div
-            class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex items-center hover:shadow-md transition-shadow">
-            <div class="p-4 bg-orange-50 text-orange-600 rounded-lg mr-4">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 flex items-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer border-l-4 border-l-orange-500">
+            <div class="p-4 bg-orange-50 text-orange-600 rounded-xl mr-4 group-hover:scale-110 transition-transform duration-300">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
                 </svg>
             </div>
             <div>
-                <p class="text-sm font-medium text-slate-500">Ongoing Operations</p>
-                <p class="text-2xl font-bold text-slate-800">34</p>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Item Master</p>
+                <p class="text-2xl font-black text-slate-900">{{ number_format($stats['items']) }}</p>
             </div>
         </div>
-        <div
-            class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex items-center hover:shadow-md transition-shadow">
-            <div class="p-4 bg-emerald-50 text-emerald-600 rounded-lg mr-4">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 flex items-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer border-l-4 border-l-slate-800">
+            <div class="p-4 bg-slate-50 text-slate-800 rounded-xl mr-4 group-hover:scale-110 transition-transform duration-300">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                 </svg>
             </div>
             <div>
-                <p class="text-sm font-medium text-slate-500">Vessels Deployed</p>
-                <p class="text-2xl font-bold text-slate-800">89</p>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Total Locations</p>
+                <p class="text-2xl font-black text-slate-900">{{ number_format($stats['locations']) }}</p>
             </div>
         </div>
-        <div
-            class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex items-center hover:shadow-md transition-shadow">
-            <div class="p-4 bg-purple-50 text-purple-600 rounded-lg mr-4">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 flex items-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer border-l-4 border-l-emerald-500">
+            <div class="p-4 bg-emerald-50 text-emerald-600 rounded-xl mr-4 group-hover:scale-110 transition-transform duration-300">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
             </div>
             <div>
-                <p class="text-sm font-medium text-slate-500">Flight Hours (MTD)</p>
-                <p class="text-2xl font-bold text-slate-800">1,204h</p>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Latest Item Code</p>
+                <p class="text-2xl font-black text-slate-900">{{ $stats['last_item']->code ?? 'N/A' }}</p>
             </div>
         </div>
     </div>
 
     <!-- Notice Board Section -->
-    <div class="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden mb-8">
+    <div class="bg-white rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden mb-8">
         <!-- Header -->
-        <div class="px-6 py-4 bg-teal-700 flex items-center justify-between overflow-hidden">
-            <div class="flex items-center text-white flex-1 min-w-0 pr-4">
-                <div class="flex items-center flex-shrink-0">
-                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
-                        </path>
-                    </svg>
-                    <h3 class="text-xl font-bold tracking-wide text-black whitespace-nowrap">Notice Board</h3>
+        <div class="px-8 py-5 bg-slate-900 flex items-center justify-between">
+            <div class="flex items-center text-white flex-1 min-w-0">
+                <div class="flex items-center">
+                    <div class="p-2 bg-orange-600 rounded-lg mr-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-black tracking-tight text-white uppercase italic">Notice Board</h3>
                 </div>
 
                 @if ($notices->isNotEmpty())
-                    <div class="ml-8 overflow-hidden flex-1 relative h-8">
-                        <div class="absolute whitespace-nowrap animate-marquee-text text-red-500 font-black tracking-widest text-sm flex items-center h-full drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.2)]">
-                            <span>{{ $notices->first()->title }}</span>
+                    <div class="ml-10 overflow-hidden flex-1 relative h-6 hidden md:block border-l border-white/20 pl-6">
+                        <div class="absolute whitespace-nowrap animate-marquee-text text-orange-400 font-bold tracking-wide text-sm flex items-center h-full">
+                            <span>ATTENTION: {{ $notices->first()->title }}</span>
                         </div>
                     </div>
                 @endif
             </div>
 
-            <div class="flex items-center flex-shrink-0">
-                <span
-                    class="text-teal-50 text-xs font-semibold bg-teal-800/50 px-3 py-1 rounded-full border border-teal-600/30">
+            <div class="flex items-center space-x-4">
+                <span class="text-slate-400 text-xs font-bold bg-white/5 px-4 py-2 rounded-xl border border-white/10 uppercase tracking-widest leading-none">
                     {{ now()->format('d M Y') }}
                 </span>
             </div>
         </div>
 
         <!-- Notices Content -->
-        <div class="px-5 py-6">
+        <div class="px-8 py-8">
             @if ($notices->isEmpty())
-                <div class="py-16 text-center text-slate-400">
-                    <svg class="w-12 h-12 mx-auto mb-4 opacity-20" fill="none" stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
-                        </path>
+                <div class="py-20 text-center text-slate-300">
+                    <svg class="w-16 h-16 mx-auto mb-4 opacity-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                     </svg>
-                    <p class="italic">No active notices published yet.</p>
+                    <p class="italic text-lg">No active notices published yet.</p>
                 </div>
             @else
                 <div class="notice-slider overflow-y-auto h-[450px] space-y-4 pr-3 custom-scrollbar"
                     id="notice-container">
                     @foreach ($notices as $notice)
-                        <div class="notice-item group bg-white rounded-xl border border-slate-100 hover:border-teal-200 hover:shadow-md transition-all duration-300 overflow-hidden"
+                        <div class="notice-item group bg-white rounded-xl border border-slate-100 hover:border-teal-400 hover:bg-slate-50/30 hover:shadow-lg transition-all duration-300 overflow-hidden"
                             style="margin-bottom: 10px;">
                             <!-- Notice Header -->
                             <button onclick="toggleNotice(this)"
@@ -230,22 +221,22 @@
                 </div>
 
                 <!-- Slider Controls -->
-                {{-- <div class="mt-6 flex items-center justify-center gap-4">
+                <div class="mt-6 flex items-center justify-center gap-4">
                     <button id="prevNotice"
-                        class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-teal-600 hover:border-teal-300 transition-all">
+                        class="w-10 h-10 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center text-slate-400 hover:text-teal-600 hover:border-teal-300 hover:shadow-md transition-all">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M15 19l-7-7 7-7"></path>
                         </svg>
                     </button>
                     <button id="nextNotice"
-                        class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-teal-600 hover:border-teal-300 transition-all">
+                        class="w-10 h-10 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center text-slate-400 hover:text-teal-600 hover:border-teal-300 hover:shadow-md transition-all">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
                             </path>
                         </svg>
                     </button>
-                </div> --}}
+                </div>
             @endif
         </div>
     </div>
@@ -269,12 +260,17 @@
         }
 
         @keyframes marquee-text {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
         }
 
         .animate-marquee-text {
-            animation: marquee-text 12s linear infinite;
+            animation: marquee-text 15s linear infinite;
         }
     </style>
 
@@ -287,12 +283,19 @@
             const isHidden = content.classList.contains('hidden');
 
             // Close others
-            document.querySelectorAll('.notice-content').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.accordion-icon').forEach(el => el.classList.remove('rotate-180'));
+            document.querySelectorAll('.notice-content').forEach(el => {
+                if (el !== content) el.classList.add('hidden');
+            });
+            document.querySelectorAll('.accordion-icon').forEach(el => {
+                if (el !== icon) el.classList.remove('rotate-180');
+            });
 
             if (isHidden) {
                 content.classList.remove('hidden');
                 icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
             }
         }
 
@@ -300,23 +303,31 @@
             const container = document.getElementById('notice-container');
             if (!container) return;
 
-            document.getElementById('nextNotice').addEventListener('click', () => {
-                container.scrollBy({
-                    top: 100,
-                    behavior: 'smooth'
-                });
-            });
+            const nextBtn = document.getElementById('nextNotice');
+            const prevBtn = document.getElementById('prevNotice');
 
-            document.getElementById('prevNotice').addEventListener('click', () => {
-                container.scrollBy({
-                    top: -100,
-                    behavior: 'smooth'
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    container.scrollBy({
+                        top: 150,
+                        behavior: 'smooth'
+                    });
                 });
-            });
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    container.scrollBy({
+                        top: -150,
+                        behavior: 'smooth'
+                    });
+                });
+            }
 
             // Gentle Auto-scroll
-            setInterval(() => {
+            let scrollInterval = setInterval(() => {
                 if (container.matches(':hover')) return;
+
                 if (container.scrollTop + container.clientHeight >= container.scrollHeight - 5) {
                     container.scrollTo({
                         top: 0,
@@ -328,7 +339,17 @@
                         behavior: 'auto'
                     });
                 }
-            }, 50);
+            }, 60);
+
+            // Pause on button click to avoid jumping
+            [nextBtn, prevBtn].forEach(btn => {
+                if (btn) btn.addEventListener('click', () => {
+                    clearInterval(scrollInterval);
+                    setTimeout(() => {
+                        // Restart interval logic could go here if desired
+                    }, 5000);
+                });
+            });
         });
     </script>
 </x-app-layout>
