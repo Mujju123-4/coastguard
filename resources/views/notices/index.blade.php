@@ -1,87 +1,103 @@
 <x-app-layout>
-    <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center mb-6">
-            <h2 class="text-2xl font-semibold text-slate-800">Notice Master</h2>
-            <a href="{{ route('notices.create') }}" class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded transition-colors">
-                Add New Notice
-            </a>
+    <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        <!-- Header Section -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+            <div>
+                <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Notice Master</h2>
+                <p class="text-slate-500 mt-1">Broadcast important announcements and updates.</p>
+            </div>
+            <div>
+                <a href="{{ route('notices.create') }}" class="inline-flex items-center px-5 py-2.5 bg-orange-600 border border-transparent rounded-xl font-bold text-white hover:bg-orange-700 active:bg-orange-800 transition-all shadow-lg shadow-orange-600/20">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
+                    New Notice
+                </a>
+            </div>
         </div>
 
-        @if (session('success'))
-            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
-                <span class="block sm:inline">{{ session('success') }}</span>
+        <!-- Table Container -->
+        <div class="bg-white rounded-3xl shadow-xl shadow-slate-200/60 overflow-hidden border border-slate-100">
+            <div class="p-6 overflow-x-auto">
+                <table id="notices-table" class="w-full border-separate border-spacing-y-0.5">
+                    <thead>
+                        <tr class="bg-slate-50/50 text-slate-500 uppercase text-xs font-bold tracking-widest leading-none">
+                            <th class="px-6 py-4 text-left border-b border-slate-100 first:rounded-tl-2xl">Sr. No.</th>
+                            <th class="px-6 py-4 text-left border-b border-slate-100">Title</th>
+                            <th class="px-6 py-4 text-left border-b border-slate-100">Category</th>
+                            <th class="px-6 py-4 text-left border-b border-slate-100">Published</th>
+                            <th class="px-6 py-4 text-right border-b border-slate-100 last:rounded-tr-2xl">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-600">
+                        <!-- DataTables will populate this -->
+                    </tbody>
+                </table>
             </div>
-        @endif
-
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <table class="min-w-full divide-y divide-slate-200">
-                <thead class="bg-slate-50">
-                    <tr>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Preview</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Title</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Category</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Published At</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Status</th>
-                        <th class="px-6 py-3 text-right text-xs font-medium text-slate-500 uppercase tracking-wider">Actions</th>
-                    </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-slate-200">
-                    @forelse ($notices as $notice)
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm">
-                                @if($notice->file_path)
-                                    @php
-                                        $extension = pathinfo($notice->file_path, PATHINFO_EXTENSION);
-                                        $isImage = in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif', 'svg']);
-                                    @endphp
-                                    @if($isImage)
-                                        <img src="{{ asset('storage/' . $notice->file_path) }}" class="h-10 w-10 object-cover rounded shadow-sm border border-slate-200">
-                                    @else
-                                        <div class="h-10 w-10 flex items-center justify-center bg-slate-100 rounded text-slate-400">
-                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                                        </div>
-                                    @endif
-                                @else
-                                    <div class="h-10 w-10 flex items-center justify-center bg-slate-50 rounded text-slate-300">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path></svg>
-                                    </div>
-                                @endif
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900">
-                                {{ Str::limit($notice->title, 40) }}
-                                @if($notice->file_path)
-                                    <svg class="w-4 h-4 inline-block text-rose-500 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                                @endif
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500">
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-slate-100 text-slate-800">
-                                    {{ $notice->category }}
-                                </span>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500">{{ $notice->published_at->format('d M Y, h:i A') }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500">
-                                @if($notice->is_active)
-                                    <span class="text-green-600 font-bold">Active</span>
-                                @else
-                                    <span class="text-slate-400 italic">Inactive</span>
-                                @endif
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a href="{{ route('notices.edit', $notice->id) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">Edit</a>
-                                <form action="{{ route('notices.destroy', $notice->id) }}" method="POST" class="inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="text-rose-600 hover:text-rose-900" onclick="return confirm('Are you sure?')">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="5" class="px-6 py-4 text-center text-slate-500 italic">No notices found.</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
         </div>
     </div>
+
+    @push('styles')
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+    <style>
+        .dataTables_wrapper { padding-top: 0.5rem; }
+        .dataTables_filter { margin-bottom: 1.5rem !important; float: left !important; }
+        .dataTables_filter input {
+            background-color: #f8fafc !important;
+            border: 1px solid #e2e8f0 !important;
+            border-radius: 12px !important;
+            padding: 0.6rem 1rem !important;
+            width: 300px !important;
+            margin-left: 0 !important;
+        }
+        .dataTables_filter input:focus {
+            background-color: #fff !important;
+            border-color: #ea580c !important;
+            box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.1) !important;
+            outline: none !important;
+        }
+        .dataTables_length { margin-bottom: 1.5rem !important; float: right !important; }
+        .dataTables_length select { border-radius: 8px !important; border: 1px solid #e2e8f0 !important; }
+        
+        table.dataTable.no-footer { border-bottom: none !important; }
+        table.dataTable tbody tr { transition: all 0.2s; }
+        table.dataTable tbody tr:hover { background-color: #f8fafc !important; }
+        table.dataTable tbody td { padding: 1.25rem 1.5rem !important; border-bottom: 1px solid #f1f5f9 !important; }
+        
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            background: #ea580c !important;
+            color: white !important;
+            border-radius: 8px !important;
+            border: none !important;
+        }
+    </style>
+    @endpush
+
+    @push('scripts')
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#notices-table').DataTable({
+                processing: true,
+                serverSide: true,
+                responsive: true,
+                dom: '<"flex flex-col md:flex-row justify-between items-center mb-4"fl>rtip',
+                ajax: "{{ route('notices.index') }}",
+                columns: [
+                    { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
+                    { data: 'title', name: 'title' },
+                    { data: 'category_badge', name: 'category', orderable: false, searchable: false },
+                    { data: 'published_at_formatted', name: 'published_at' },
+                    { data: 'action', name: 'action', orderable: false, searchable: false, class: 'text-right' }
+                ],
+                language: {
+                    search: "",
+                    searchPlaceholder: "Search Notices...",
+                },
+                order: [[3, 'desc']]
+            });
+        });
+    </script>
+    @endpush
 </x-app-layout>

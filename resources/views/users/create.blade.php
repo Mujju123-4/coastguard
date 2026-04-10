@@ -15,8 +15,8 @@
                         <p id="error-name" class="text-red-600 text-xs mt-1 hidden"></p>
                     </div>
                     <div>
-                        <label for="email" class="block text-sm font-medium text-slate-700">Email Address</label>
-                        <input type="email" name="email" id="email" value="{{ old('email') }}"
+                        <label for="email" class="block text-sm font-medium text-slate-700">User Id</label>
+                        <input type="text" name="email" id="email" value="{{ old('email') }}"
                             class="mt-1 block w-full border-slate-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500">
                         <p id="error-email" class="text-red-600 text-xs mt-1 hidden"></p>
                     </div>
