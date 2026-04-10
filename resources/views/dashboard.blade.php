@@ -179,7 +179,7 @@
                                     @if ($notice->file_path && $isImage)
                                         <div
                                             class="w-full md:w-32 h-20 bg-white rounded border border-slate-200 flex-shrink-0 overflow-hidden">
-                                            <img src="{{ asset('storage/' . $notice->file_path) }}"
+                                            <img src="{{ asset($notice->file_path) }}"
                                                 class="w-full h-full object-cover">
                                         </div>
                                     @endif

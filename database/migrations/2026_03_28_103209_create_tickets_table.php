@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
+            $table->string('ref')->unique();                        // e.g. TKT-1042
+            $table->foreignId('item_master_id')->constrained()->onDelete('cascade');
+            $table->foreignId('raised_by')->constrained('users')->onDelete('cascade');
+            $table->string('title');
+            $table->string('issue_type')->default('damage');        // damage|shortage|mismatch|delay|customs|other
+            $table->string('priority')->default('medium');          // low|medium|high|critical
+            $table->text('description');
+            $table->string('assignee')->nullable();
+            $table->string('status')->default('open');              // open|in_progress|resolved|closed
             $table->timestamps();
         });
     }

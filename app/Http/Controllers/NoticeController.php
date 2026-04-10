@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\Notice;
-use Illuminate\Support\Facades\Storage;
 
 class NoticeController extends Controller
 {
@@ -62,24 +60,40 @@ class NoticeController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'nullable|string',
-            'category' => 'required|string',
-            'file' => 'nullable|file|mimes:pdf,jpg,png,doc,docx|max:2048',
+        $validated = $request->validate([
+            'title'        => 'required|string|max:255',
+            'content'      => 'nullable|string',
+            'category'     => 'required|string',
+            'is_active'    => 'nullable|boolean',
+            'file'         => 'nullable|file|mimes:pdf,jpg,png,doc,docx|max:2048',
             'published_at' => 'nullable|date',
         ]);
 
-        $data = $request->only(['title', 'content', 'category', 'is_active']);
-        $data['published_at'] = $request->published_at ?? now();
+        $data = [
+            'title'        => $validated['title'],
+            'content'      => $validated['content'] ?? null,
+            'category'     => $validated['category'],
+            'is_active'    => $validated['is_active'] ?? true,
+            'published_at' => $validated['published_at'] ?? now(),
+        ];
 
         if ($request->hasFile('file')) {
-            $data['file_path'] = $request->file('file')->store('notices', 'public');
+            $file        = $request->file('file');
+            $filename    = time() . '_' . $file->getClientOriginalName();
+            $destination = public_path('notices');
+
+            if (!file_exists($destination)) {
+                mkdir($destination, 0775, true);
+            }
+
+            $file->move($destination, $filename);
+            $data['file_path'] = 'notices/' . $filename;
         }
 
         Notice::create($data);
 
-        return redirect()->route('notices.index')->with('success', 'Notice created successfully.');
+        return redirect()->route('notices.index')
+                         ->with('success', 'Notice created successfully.');
     }
 
     public function edit(Notice $notice)
@@ -89,36 +103,57 @@ class NoticeController extends Controller
 
     public function update(Request $request, Notice $notice)
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'nullable|string',
-            'category' => 'required|string',
-            'file' => 'nullable|file|mimes:pdf,jpg,png,doc,docx|max:2048',
+        $validated = $request->validate([
+            'title'        => 'required|string|max:255',
+            'content'      => 'nullable|string',
+            'category'     => 'required|string',
+            'is_active'    => 'nullable|boolean',
+            'file'         => 'nullable|file|mimes:pdf,jpg,png,doc,docx|max:2048',
             'published_at' => 'nullable|date',
         ]);
 
-        $data = $request->only(['title', 'content', 'category', 'is_active']);
-        $data['published_at'] = $request->published_at ?? $notice->published_at;
+        $data = [
+            'title'        => $validated['title'],
+            'content'      => $validated['content'] ?? null,
+            'category'     => $validated['category'],
+            'is_active'    => $validated['is_active'] ?? true,
+            'published_at' => $validated['published_at'] ?? $notice->published_at,
+        ];
 
         if ($request->hasFile('file')) {
             // Delete old file if exists
-            if ($notice->file_path) {
-                Storage::disk('public')->delete($notice->file_path);
+            if ($notice->file_path && file_exists(public_path($notice->file_path))) {
+                unlink(public_path($notice->file_path));
             }
-            $data['file_path'] = $request->file('file')->store('notices', 'public');
+
+            $file        = $request->file('file');
+            $filename    = time() . '_' . $file->getClientOriginalName();
+            $destination = public_path('notices');
+
+            if (!file_exists($destination)) {
+                mkdir($destination, 0775, true);
+            }
+
+            $file->move($destination, $filename);
+            $data['file_path'] = 'notices/' . $filename;
         }
 
         $notice->update($data);
 
-        return redirect()->route('notices.index')->with('success', 'Notice updated successfully.');
+        return redirect()->route('notices.index')
+                         ->with('success', 'Notice updated successfully.');
     }
 
     public function destroy(Notice $notice)
     {
-        if ($notice->file_path) {
-            Storage::disk('public')->delete($notice->file_path);
+        // Delete file from public/notices/
+        if ($notice->file_path && file_exists(public_path($notice->file_path))) {
+            unlink(public_path($notice->file_path));
         }
+
         $notice->delete();
-        return redirect()->route('notices.index')->with('success', 'Notice deleted successfully.');
+
+        return redirect()->route('notices.index')
+                         ->with('success', 'Notice deleted successfully.');
     }
 }
