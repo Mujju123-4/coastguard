@@ -8,11 +8,11 @@
         <!-- Email Address -->
         <div class="space-y-1">
             <label for="email"
-                class="block font-medium text-sm text-gray-200 tracking-wide">{{ __('Email Address') }}</label>
+                class="block font-medium text-sm text-gray-200 tracking-wide">{{ __('User Id') }}</label>
             <input id="email"
                 class="block w-full rounded-md border-0 py-2.5 px-3 bg-white/5 text-white shadow-sm ring-1 ring-inset ring-white/20 focus:ring-2 focus:ring-inset focus:ring-orange-500 sm:text-sm sm:leading-6 placeholder:text-gray-400 transition-all"
-                type="email" name="email" :value="old('email')" required autofocus autocomplete="username"
-                placeholder="officer@indiancoastguard.gov.in" />
+                type="text" name="email" :value="old('email')" required autofocus autocomplete="username"
+                placeholder="" />
             <x-input-error :messages="$errors->get('email')" class="mt-2 text-rose-400" />
         </div>
 
@@ -44,12 +44,12 @@
         </div>
 
         <div class="flex items-center justify-between mt-8">
-            @if (Route::has('password.request'))
-                <a class="text-sm text-orange-400 hover:text-orange-300 transition-colors"
-                    href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+            <!--//    @if (Route::has('password.request'))-->
+            <!--        <a class="text-sm text-orange-400 hover:text-orange-300 transition-colors"-->
+            <!--            href="{{ route('password.request') }}">-->
+            <!--            {{ __('Forgot your password?') }}-->
+            <!--        </a>-->
+            <!--    @endif-->
 
             <button type="submit"
                 class="inline-flex justify-center items-center rounded-md bg-orange-600 px-6 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 transition-all duration-200 uppercase tracking-widest">

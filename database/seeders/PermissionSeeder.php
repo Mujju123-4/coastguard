@@ -17,11 +17,13 @@ class PermissionSeeder extends Seeder
 
         // Define permission groups
         $permissions = [
-            'users' => ['view users', 'create users', 'edit users', 'delete users'],
-            'roles' => ['view roles', 'create roles', 'edit roles', 'delete roles'],
-            'permissions' => ['view permissions', 'create permissions', 'edit permissions', 'delete permissions'],
-            'locations' => ['view locations', 'create locations', 'edit locations', 'delete locations'],
-            'notices' => ['view notices', 'create notices', 'edit notices', 'delete notices'],
+            'users'        => ['view users', 'create users', 'edit users', 'delete users'],
+            'roles'        => ['view roles', 'create roles', 'edit roles', 'delete roles'],
+            'permissions'  => ['view permissions', 'create permissions', 'edit permissions', 'delete permissions'],
+            'locations'    => ['view locations', 'create locations', 'edit locations', 'delete locations'],
+            'notices'      => ['view notices', 'create notices', 'edit notices', 'delete notices'],
+            'item masters' => ['view item masters', 'create item masters', 'edit item masters', 'delete item masters', 'import item masters'],
+            'tickets'      => ['raise tickets'],
         ];
 
         foreach ($permissions as $group => $names) {

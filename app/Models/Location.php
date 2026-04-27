@@ -11,4 +11,14 @@ class Location extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function items(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(ItemMaster::class);
+    }
+
+    public function users(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(User::class);
+    }
 }

@@ -13,12 +13,19 @@
                 </div>
             </div>
 
+
+@php
+    $user = auth()->user();
+    $isAdmin = $user->hasRole(['Admin','Super Admin']);
+@endphp
             <!-- Password Update -->
+            @if($isAdmin)
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 border-l-4 border-orange-500">
                 <div class="max-w-xl">
                     @include('profile.partials.update-password-form')
                 </div>
             </div>
+            @endif
 
             <!-- Delete Account -->
             {{-- <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 border-l-4 border-rose-500">

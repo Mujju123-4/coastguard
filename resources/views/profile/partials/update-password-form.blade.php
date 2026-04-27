@@ -30,7 +30,12 @@
             <x-text-input id="update_password_password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full" autocomplete="new-password" />
             <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
         </div>
-
+        @php
+    $user = auth()->user();
+    $isAdmin = $user->hasRole(['Admin','Super Admin']);
+@endphp
+        
+        @if($isAdmin)
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
@@ -44,5 +49,6 @@
                 >{{ __('Saved.') }}</p>
             @endif
         </div>
+        @endif
     </form>
 </section>
