@@ -1,12 +1,17 @@
 <x-app-layout>
     <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+<<<<<<< HEAD
 
         <!-- Page Header -->
+=======
+        <!-- Header Section -->
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
             <div>
                 <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Location Master</h2>
                 <p class="text-slate-500 mt-1">Manage coastal stations and vessel headquarters.</p>
             </div>
+<<<<<<< HEAD
             @role('Super Admin')
             <a href="{{ route('locations.create') }}"
                class="inline-flex items-center px-5 py-2.5 bg-orange-600 border border-transparent rounded-xl font-bold text-white hover:bg-orange-700 active:bg-orange-800 transition-all shadow-lg shadow-orange-600/20">
@@ -64,21 +69,47 @@
                         </tr>
                     </thead>
                     <tbody class="text-slate-600 divide-y divide-slate-50">
+=======
+            <div>
+                <a href="{{ route('locations.create') }}" class="inline-flex items-center px-5 py-2.5 bg-orange-600 border border-transparent rounded-xl font-bold text-white hover:bg-orange-700 active:bg-orange-800 transition-all shadow-lg shadow-orange-600/20">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
+                    New Location
+                </a>
+            </div>
+        </div>
+
+        <!-- Table Container -->
+        <div class="bg-white rounded-3xl shadow-xl shadow-slate-200/60 overflow-hidden border border-slate-100">
+            <div class="p-6 overflow-x-auto">
+                <table id="locations-table" class="w-full border-separate border-spacing-y-0.5">
+                    <thead>
+                        <tr class="bg-slate-50/50 text-slate-500 uppercase text-xs font-bold tracking-widest leading-none">
+                            <th class="px-6 py-4 text-left border-b border-slate-100 first:rounded-tl-2xl">Sr. No.</th>
+                            <th class="px-6 py-4 text-left border-b border-slate-100">Location Name</th>
+                            <th class="px-6 py-4 text-right border-b border-slate-100 last:rounded-tr-2xl">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-600">
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                         <!-- DataTables will populate this -->
                     </tbody>
                 </table>
             </div>
+<<<<<<< HEAD
 
             <!-- Card Bottom Bar: Info + Pagination -->
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-6 py-4 border-t border-slate-100 bg-slate-50/40">
                 <div id="locations-info" class="text-sm text-slate-400"></div>
                 <div id="locations-pagination"></div>
             </div>
+=======
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         </div>
     </div>
 
     @push('styles')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+<<<<<<< HEAD
     <style>
         /* Strip ALL default DataTables chrome — we use our own */
         .dataTables_wrapper .dataTables_filter,
@@ -110,6 +141,39 @@
         }
         #locations-pagination .page-item.disabled .page-link {
             opacity: 0.35; cursor: not-allowed;
+=======
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+    <style>
+        .dataTables_wrapper { padding-top: 0.5rem; }
+        .dataTables_filter { margin-bottom: 1.5rem !important; float: left !important; }
+        .dataTables_filter input {
+            background-color: #f8fafc !important;
+            border: 1px solid #e2e8f0 !important;
+            border-radius: 12px !important;
+            padding: 0.6rem 1rem !important;
+            width: 300px !important;
+            margin-left: 0 !important;
+        }
+        .dataTables_filter input:focus {
+            background-color: #fff !important;
+            border-color: #ea580c !important;
+            box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.1) !important;
+            outline: none !important;
+        }
+        .dataTables_length { margin-bottom: 1.5rem !important; float: right !important; }
+        .dataTables_length select { border-radius: 8px !important; border: 1px solid #e2e8f0 !important; }
+        
+        table.dataTable.no-footer { border-bottom: none !important; }
+        table.dataTable tbody tr { transition: all 0.2s; }
+        table.dataTable tbody tr:hover { background-color: #f8fafc !important; }
+        table.dataTable tbody td { padding: 1.25rem 1.5rem !important; border-bottom: 1px solid #f1f5f9 !important; }
+        
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            background: #ea580c !important;
+            color: white !important;
+            border-radius: 8px !important;
+            border: none !important;
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         }
     </style>
     @endpush
@@ -117,6 +181,7 @@
     @push('scripts')
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<<<<<<< HEAD
     <script>
     $(document).ready(function () {
         var isSuperAdmin = {{ auth()->user()->hasRole('Super Admin') ? 'true' : 'false' }};
@@ -205,3 +270,28 @@
     </script>
     @endpush
 </x-app-layout>
+=======
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#locations-table').DataTable({
+                processing: true,
+                serverSide: true,
+                responsive: true,
+                dom: '<"flex flex-col md:flex-row justify-between items-center mb-4"fl>rtip',
+                ajax: "{{ route('locations.index') }}",
+                columns: [
+                    { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
+                    { data: 'name', name: 'name' },
+                    { data: 'action', name: 'action', orderable: false, searchable: false, class: 'text-right' }
+                ],
+                language: {
+                    search: "",
+                    searchPlaceholder: "Search Locations...",
+                }
+            });
+        });
+    </script>
+    @endpush
+</x-app-layout>
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933

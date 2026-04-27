@@ -21,9 +21,14 @@
             </div>
 
             <div class="flex flex-wrap items-center gap-3 bg-white p-2 rounded-[22px] border border-slate-100 shadow-xl shadow-slate-200/50">
+<<<<<<< HEAD
                 @if(auth()->user()->hasAnyRole(['Superadmin', 'Super Admin']))
                 <div class="relative group pl-2">
                     <div class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-hover:text-amber-500 transition-colors pointer-events-none">
+=======
+                <div class="relative group pl-2">
+                    <div class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-hover:text-orange-500 transition-colors pointer-events-none">
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
@@ -32,13 +37,18 @@
                         </svg>
                     </div>
                     <select id="location_filter"
+<<<<<<< HEAD
                             class="pl-10 pr-10 py-2.5 bg-slate-50 border-none rounded-xl text-sm font-bold text-slate-700 hover:bg-slate-100 focus:ring-0 transition-all appearance-none cursor-pointer min-w-[180px]">
+=======
+                            class="pl-10 pr-10 py-2.5 bg-slate-50 border-none rounded-xl text-sm font-bold text-slate-700 hover:bg-slate-100 focus:ring-0 transition-all appearance-none cursor-pointer min-w-[200px]">
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                         <option value="">All Locations</option>
                         @foreach($locations as $location)
                             <option value="{{ $location->id }}">{{ $location->name }}</option>
                         @endforeach
                     </select>
                 </div>
+<<<<<<< HEAD
                 <div class="h-8 w-px bg-slate-100 mx-1"></div>
                 @endif
 
@@ -62,11 +72,41 @@
                 </a>
                 @endif
 
+=======
+
+                <div class="h-8 w-px bg-slate-100 mx-1"></div>
+
+                @if(auth()->user()->hasAnyRole(['Superadmin', 'Super Admin']))
+                <a href="{{ route('item-masters.import') }}"
+                   class="p-2.5 text-slate-500 hover:text-orange-600 hover:bg-orange-50 rounded-xl transition-all group"
+                   title="Import CSV">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                    </svg>
+                </a>
+                @endif
+
+                <button onclick="exportItemMaster()"
+                   class="p-2.5 text-slate-500 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all group"
+                   title="Export CSV">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                </button>
+
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                 @can('create item masters')
                 <a href="{{ route('item-masters.create') }}"
                    class="inline-flex items-center px-6 py-2.5 bg-slate-900 border border-slate-900 rounded-xl font-bold text-white hover:bg-orange-600 hover:border-orange-600 active:scale-95 transition-all shadow-lg shadow-slate-900/10 hover:shadow-orange-600/20">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<<<<<<< HEAD
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+=======
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                     </svg>
                     New Item
                 </a>
@@ -86,12 +126,17 @@
                             <th class="px-3 py-4 text-left text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100 all">Code</th>
                             <th class="px-3 py-4 text-left text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100 all">Equipment</th>
                             <th class="px-3 py-4 text-left text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100 min-tablet">Qty</th>
+<<<<<<< HEAD
                             <th class="px-3 py-4 text-left text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100 min-tablet">Serviced Date</th>
                             <th class="px-3 py-4 text-center text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100 all">Status</th>
                             {{-- Must match JS hasActionRole condition exactly --}}
                             @if(auth()->user()->hasAnyRole(['Super Admin', 'Location Users']))
                             <th class="px-4 py-4 text-right text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100 last:rounded-tr-2xl all">Actions</th>
                             @endif
+=======
+                            <th class="px-3 py-4 text-center text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100 all">Status</th>
+                            <th class="px-4 py-4 text-right text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100 last:rounded-tr-2xl all">Actions</th>
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                         </tr>
                     </thead>
                     <tbody class="text-slate-600">
@@ -103,6 +148,10 @@
     </div>
 
     {{-- ===================== TICKET MODAL ===================== --}}
+<<<<<<< HEAD
+=======
+    {{-- Placed OUTSIDE the page content div, at body level --}}
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
     <div id="ticket-modal-overlay"
          style="display:none; position:fixed; inset:0; z-index:9999;
                 background:rgba(15,23,42,0.6);
@@ -175,6 +224,10 @@
                         </div>
                     </div>
 
+<<<<<<< HEAD
+=======
+                    {{-- Hidden item_id --}}
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                     <input type="hidden" id="ticket-item-id">
 
                     {{-- Ticket Title --}}
@@ -190,6 +243,7 @@
                                       font-size:0.875rem; color:#1e293b; outline:none; transition:border 0.15s;">
                     </div>
 
+<<<<<<< HEAD
                     {{-- Equipment Status --}}
                     <div style="margin-bottom:1rem;">
                         <label style="display:block; font-size:0.7rem; font-weight:700; color:#64748b; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.375rem;">
@@ -211,6 +265,8 @@
                         </div>
                     </div>
 
+=======
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                     {{-- Issue Type --}}
                     <div style="margin-bottom:1rem;">
                         <label style="display:block; font-size:0.7rem; font-weight:700; color:#64748b; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.375rem;">Issue Type</label>
@@ -258,6 +314,7 @@
                         </label>
                         <div style="position:relative; width:100%; box-sizing:border-box; padding:0.625rem 1rem;
                                     background:#f8fafc; border:1.5px dashed #cbd5e1; border-radius:1rem;
+<<<<<<< HEAD
                                     display:flex; align-items:center; gap:0.5rem; transition:border 0.15s;"
                              id="ticket-image-container">
                             <svg style="width:1.25rem; height:1.25rem; color:#94a3b8;" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
@@ -277,10 +334,27 @@
                                            border:none; border-radius:50%; width:20px; height:20px;
                                            cursor:pointer; font-size:10px; font-weight:bold;
                                            display:flex; align-items:center; justify-content:center;">×</button>
+=======
+                                    display:flex; align-items:center; gap:0.5rem; transition:border 0.15s; outline:none;" 
+                             id="ticket-image-container">
+                             <svg style="width:1.25rem; height:1.25rem; color:#94a3b8;" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6.75a1.5 1.5 0 00-1.5-1.5H3.75a1.5 1.5 0 00-1.5 1.5v12.75a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                             </svg>
+                             <input type="file" id="ticket-image" accept="image/*" 
+                                    style="position:absolute; width:100%; height:100%; top:0; left:0; opacity:0; cursor:pointer;"
+                                    onchange="handleImageSelect(this)">
+                             <span id="ticket-image-name" style="font-size:0.8rem; color:#94a3b8;">Click to upload or drag & drop</span>
+                        </div>
+                        {{-- Image Preview --}}
+                        <div id="ticket-image-preview-container" style="display:none; margin-top:0.75rem; position:relative;">
+                             <img id="ticket-image-preview" src="#" style="max-width:100%; max-height:150px; border-radius:0.75rem; border:1px solid #e2e8f0;">
+                             <button type="button" onclick="removeSelectedImage()" style="position:absolute; top:-8px; right:-8px; background:#f43f5e; color:white; border:none; border-radius:50%; width:20px; height:200px; max-height:20px; cursor:pointer; font-size:10px; font-weight:bold; display:flex; align-items:center; justify-content:center;">×</button>
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                         </div>
                         <p id="ticket-image-error" style="display:none; color:#f43f5e; font-size:0.75rem; font-weight:600; margin-top:0.375rem;"></p>
                     </div>
 
+<<<<<<< HEAD
                     {{-- Contact Details --}}
                     <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
                         <div style="grid-column: span 2;">
@@ -316,6 +390,42 @@
                                           background:#f8fafc; border:1.5px solid #e2e8f0; border-radius:0.75rem;
                                           font-size:0.875rem; color:#1e293b; outline:none; transition:border 0.15s;">
                         </div>
+=======
+                    {{-- Concern Person (Non-editable) --}}
+                    <div style="margin-bottom:1rem; padding:0.75rem 1rem; background:#f8fafc; border:1.5px solid #e2e8f0; border-radius:0.75rem;">
+                        <label style="display:block; font-size:0.7rem; font-weight:700; color:#64748b; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.5rem;">Concern Person Details</label>
+                        <div style="font-size:0.875rem; color:#1e293b; line-height:1.5;">
+                            <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:2px;">
+                                <svg style="width:0.875rem; height:0.875rem; color:#94a3b8;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+                                <span style="font-weight:700;">{{ auth()->user()->name }}</span>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:2px;">
+                                <svg style="width:0.875rem; height:0.875rem; color:#94a3b8;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                                <span style="font-size:0.8rem; color:#64748b;">{{ auth()->user()->email }}</span>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:0.5rem;">
+                                <svg style="width:0.875rem; height:0.875rem; color:#94a3b8;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                                <span style="font-size:0.8rem; color:#64748b;">{{ auth()->user()->phone ?? 'Contact not set' }}</span>
+                            </div>
+                        </div>
+                        <input type="hidden" id="ticket-contact-person" value="{{ auth()->user()->name }} ({{ auth()->user()->email }}) {{ auth()->user()->phone ? ' - ' . auth()->user()->phone : '' }}">
+                    </div>
+
+                    {{-- Assignee --}}
+                    <div>
+                        <label style="display:block; font-size:0.7rem; font-weight:700; color:#64748b; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.375rem;">Assign to</label>
+                        <select id="ticket-assignee"
+                                style="width:100%; box-sizing:border-box; padding:0.625rem 1rem;
+                                       background:#f8fafc; border:1.5px solid #e2e8f0; border-radius:0.75rem;
+                                       font-size:0.875rem; color:#334155; outline:none;">
+                            <option value="">Unassigned</option>
+                            <option>Import ops team</option>
+                            <option>Export ops team</option>
+                            <option>Documentation team</option>
+                            <option>Customs team</option>
+                            <option>Warehouse team</option>
+                        </select>
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                     </div>
                 </div>
 
@@ -367,6 +477,10 @@
                     </button>
                 </div>
             </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         </div>
     </div>
     {{-- ===================== END TICKET MODAL ===================== --}}
@@ -374,6 +488,7 @@
     {{-- ===================== STATUS DETAILS MODAL ===================== --}}
     <div id="status-modal" class="fixed inset-0 z-[100] hidden overflow-y-auto">
         <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+<<<<<<< HEAD
             <div class="fixed inset-0 transition-opacity bg-slate-900/80 backdrop-blur-sm" onclick="closeStatusModal()"></div>
             <span class="hidden sm:inline-block sm:align-middle sm:min-h-screen">&#8203;</span>
             <div class="inline-block overflow-hidden text-left align-middle transition-all transform bg-white shadow-2xl rounded-3xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full border border-slate-100">
@@ -383,6 +498,20 @@
                             <svg class="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                         </div>
                         <h3 class="text-sm font-bold text-slate-800 uppercase tracking-widest">Equipment Condition Report</h3>
+=======
+            {{-- Backdrop --}}
+            <div class="fixed inset-0 transition-opacity bg-slate-900/80 backdrop-blur-sm" onclick="closeStatusModal()"></div>
+            
+            <span class="hidden sm:inline-block sm:align-middle sm:min-h-screen">&#8203;</span>
+
+            <div class="inline-block overflow-hidden text-left align-middle transition-all transform bg-white shadow-2xl rounded-3xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full border border-slate-100">
+                <div class="bg-slate-50 px-6 py-4 border-b border-slate-100 flex justify-between items-center">
+                    <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 rounded-xl bg-orange-100 flex items-center justify-center">
+                                <svg class="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <h3 class="text-sm font-bold text-slate-800 uppercase tracking-widest">Equipment Condition Report</h3>
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                     </div>
                     <button onclick="closeStatusModal()" class="text-slate-400 hover:text-slate-600 transition-colors p-1">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -390,7 +519,13 @@
                 </div>
                 <div class="px-8 py-10">
                     <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-inner">
+<<<<<<< HEAD
                         <p id="status-modal-reason" class="text-lg font-medium text-slate-700 leading-relaxed text-center italic">--</p>
+=======
+                        <p id="status-modal-reason" class="text-lg font-medium text-slate-700 leading-relaxed text-center italic">
+                            --
+                        </p>
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                     </div>
                 </div>
                 <div class="bg-slate-50 px-6 py-4 flex justify-end">
@@ -419,22 +554,32 @@
             box-shadow: 0 0 0 4px rgba(234,88,12,0.1) !important; outline: none !important;
         }
         .dataTables_length { margin-bottom: 1.5rem !important; float: right !important; }
+<<<<<<< HEAD
         .dataTables_length select {
             width: 64px !important;
             border: 1px solid #e2e8f0 !important;
             border-radius: 8px !important;
             padding: 0.4rem 2rem 0.4rem 0.8rem !important;
         }
+=======
+        .dataTables_length select { border: 1px solid #e2e8f0 !important; border-radius: 8px !important; padding: 0.4rem 2rem 0.4rem 0.8rem !important; }
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         table.dataTable.no-footer { border-bottom: none !important; }
         table.dataTable tbody tr { background: transparent !important; transition: all 0.2s; }
         table.dataTable tbody tr:hover { background: #f8fafc !important; }
         table.dataTable tbody td { padding: 1.1rem 1.5rem !important; border-bottom: 1px solid #f1f5f9 !important; }
+<<<<<<< HEAD
 
         /* Pagination */
         .dataTables_wrapper .dataTables_paginate .paginate_button { border-radius: 8px !important; border: 1px solid transparent !important; margin: 0 2px !important; padding: 0.4rem 0.8rem !important; }
         .dataTables_wrapper .dataTables_paginate .paginate_button.current,
         .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover { background: #ea580c !important; color: white !important; border-color: #ea580c !important; }
         .dataTables_wrapper .dataTables_paginate .paginate_button:hover:not(.current):not(.disabled) { background: #fff7ed !important; color: #ea580c !important; border-color: #fdba74 !important; }
+=======
+        .dataTables_wrapper .dataTables_paginate .paginate_button { border-radius: 8px !important; border: 1px solid transparent !important; margin: 0 2px !important; padding: 0.4rem 0.8rem !important; }
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current { background: #ea580c !important; color: white !important; border-color: #ea580c !important; }
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover { background: #fff7ed !important; color: #ea580c !important; border-color: #fdba74 !important; }
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
 
         /* Issue type chips */
         .issue-chip {
@@ -442,23 +587,47 @@
             border: 1.5px solid #e2e8f0; background: #f8fafc; color: #64748b;
             cursor: pointer; transition: all 0.15s;
         }
+<<<<<<< HEAD
         .issue-chip:hover, .issue-chip.active-chip { background: #eff6ff; border-color: #93c5fd; color: #1d4ed8; }
 
         /* Priority chips */
         .pri-chip { flex: 1; padding: 6px 0; border-radius: 999px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1.5px solid transparent; transition: all 0.15s; }
+=======
+        .issue-chip:hover, .issue-chip.active-chip {
+            background: #eff6ff; border-color: #93c5fd; color: #1d4ed8;
+        }
+
+        /* Priority chips */
+        .pri-chip {
+            flex: 1; padding: 6px 0; border-radius: 999px; font-size: 12px; font-weight: 600;
+            cursor: pointer; border: 1.5px solid transparent; transition: all 0.15s;
+        }
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         .pri-low      { background: #f0fdf4; color: #166534; border-color: #86efac; }
         .pri-medium   { background: #fffbeb; color: #92400e; border-color: #fcd34d; }
         .pri-high     { background: #fff7ed; color: #9a3412; border-color: #fdba74; }
         .pri-critical { background: #fef2f2; color: #991b1b; border-color: #fca5a5; }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         .pri-chip.active-pri.pri-low      { background: #16a34a; color: #fff; border-color: #16a34a; }
         .pri-chip.active-pri.pri-medium   { background: #d97706; color: #fff; border-color: #d97706; }
         .pri-chip.active-pri.pri-high     { background: #ea580c; color: #fff; border-color: #ea580c; }
         .pri-chip.active-pri.pri-critical { background: #dc2626; color: #fff; border-color: #dc2626; }
 
+<<<<<<< HEAD
         #ticket-submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
         #ticket-title:focus, #ticket-desc:focus,
         #ticket-contact-name:focus, #ticket-contact-email:focus, #ticket-contact-phone:focus {
+=======
+        /* Ticket submit button disabled state */
+        #ticket-submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        /* Focus rings for inputs inside modal */
+        #ticket-title:focus, #ticket-desc:focus, #ticket-assignee:focus {
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
             border-color: #fb923c !important;
             box-shadow: 0 0 0 3px rgba(251,146,60,0.15);
         }
@@ -472,6 +641,7 @@
     <script>
     $(document).ready(function () {
 
+<<<<<<< HEAD
         {{-- Renamed from isSuperAdmin → hasActionRole to accurately reflect the two-role check --}}
         var hasActionRole = {{ auth()->user()->hasAnyRole(['Super Admin', 'Location Users']) ? 'true' : 'false' }};
 
@@ -528,6 +698,9 @@
             columns.push({ data: 'action', name: 'action', orderable: false, searchable: false, className: 'px-4 text-right all', responsivePriority: 1 });
         }
 
+=======
+        /* ── DataTable ────────────────────────────────────────────── */
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         var table = $('#item-master-table').DataTable({
             processing : true,
             serverSide : true,
@@ -537,7 +710,63 @@
                 url : "{{ route('item-masters.index') }}",
                 data: function (d) { d.location_id = $('#location_filter').val(); }
             },
+<<<<<<< HEAD
             columns: columns,
+=======
+            columns: [
+                {
+                    className      : 'dt-control',
+                    orderable      : false,
+                    data           : null,
+                    defaultContent : '',
+                    responsivePriority: 1,
+                    render: function () {
+                        return '<div class="flex justify-center"><svg class="w-4 h-4 text-slate-400 cursor-pointer hover:text-orange-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div>';
+                    }
+                },
+                { data: 'DT_RowIndex',    name: 'DT_RowIndex',    orderable: false, searchable: false, className: 'px-2 min-tablet' },
+                { data: 'location_name',  name: 'location.name', className: 'px-3 min-desktop' },
+                { data: 'code',           name: 'code', className: 'px-3 text-[11px] font-mono font-bold text-slate-600 all', responsivePriority: 2 },
+                {
+                    data: 'equipment',
+                    name: 'equipment',
+                    className: 'px-3 all',
+                    responsivePriority: 3,
+                    render: function (data) {
+                        if (!data) return '';
+                        if (data.length > 40) {
+                            return '<div class="equipment-cell text-[12px] leading-tight">' +
+                                   '<span class="equipment-truncated font-semibold text-slate-700">' + data.substr(0, 40) + '...</span>' +
+                                   '<span class="equipment-full hidden font-semibold text-slate-700 text-wrap">' + data + '</span>' +
+                                   '<button onclick="toggleEquipment(this)" class="block text-[9px] font-bold text-orange-500 hover:text-orange-600 uppercase tracking-tighter mt-0.5">Read More</button>' +
+                                   '</div>';
+                        }
+                        return '<div class="font-semibold text-slate-700 text-[12px] leading-tight">' + data + '</div>';
+                    }
+                },
+                {
+                    data: 'qty', name: 'qty',
+                    className: 'px-3 min-tablet',
+                    render: function (data, type, row) {
+                        return '<div class="flex flex-col items-start leading-none"><span class="font-bold text-sm text-slate-800">' + (data || 0) + '</span><span class="text-[9px] text-slate-400 font-bold uppercase tracking-tighter">' + (row.uom || '') + '</span></div>';
+                    }
+                },
+                {
+                    data: 'status',
+                    name: 'status',
+                    className: 'px-3 text-center all',
+                    responsivePriority: 2,
+                    render: function (data, type, row) {
+                        var statusText = data || 'operational';
+                        var color = statusText === 'operational' ? 'bg-green-100 text-green-700 border-green-200' : 'bg-rose-100 text-rose-700 border-rose-200';
+                        return '<button onclick="showStatusReason(this, \'' + (row.status_reason ? row.status_reason.replace(/'/g, "\\'") : 'Condition optimal.') + '\')" class="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-tighter border ' + color + '">' +
+                               statusText +
+                               '</button>';
+                    }
+                },
+                { data: 'action', name: 'action', orderable: false, searchable: false, className: 'px-4 text-right all', responsivePriority: 1 }
+            ],
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
             language: {
                 search            : '',
                 searchPlaceholder : 'Search items…',
@@ -547,9 +776,17 @@
 
         $('#location_filter').on('change', function () { table.draw(); });
 
+<<<<<<< HEAD
         $('#item-master-table tbody').on('click', 'td.dt-control', function () {
             var tr  = $(this).closest('tr');
             var row = table.row(tr);
+=======
+        /* ── Expand/Collapse Details ────────────────────────────────── */
+        $('#item-master-table tbody').on('click', 'td.dt-control', function () {
+            var tr = $(this).closest('tr');
+            var row = table.row(tr);
+
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
             if (row.child.isShown()) {
                 row.child.hide();
                 tr.removeClass('shown');
@@ -559,10 +796,19 @@
             }
         });
 
+<<<<<<< HEAD
         $('#item-master-table tbody').on('click', '.btn-raise-ticket', function () {
             var raw = $(this).attr('data-item');
             try {
                 openTicketModal(JSON.parse(raw));
+=======
+        /* ── Delegate click on ticket buttons (DataTable re-renders rows) ─ */
+        $('#item-master-table tbody').on('click', '.btn-raise-ticket', function () {
+            var raw = $(this).attr('data-item');
+            try {
+                var item = JSON.parse(raw);
+                openTicketModal(item);
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
             } catch (e) {
                 console.error('Could not parse item data:', e, raw);
             }
@@ -576,7 +822,13 @@
                     <div class="space-y-4">
                         <div>
                             <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Detailed Equipment Description</h4>
+<<<<<<< HEAD
                             <p class="text-sm text-slate-700 leading-relaxed font-medium bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">${d.equipment}</p>
+=======
+                            <p class="text-sm text-slate-700 leading-relaxed font-medium bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+                                ${d.equipment}
+                            </p>
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                         </div>
                         <div>
                             <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Remarks / Additional Information</h4>
@@ -596,6 +848,7 @@
                             </p>
                         </div>
                         <div class="flex gap-4">
+<<<<<<< HEAD
                             <div class="flex-1 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
                                 <span class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Stock ID</span>
                                 <span class="text-xs font-mono font-bold text-slate-700">${d.code}</span>
@@ -618,6 +871,35 @@
             full.classList.remove('hidden'); trunc.classList.add('hidden'); btn.textContent = 'Read Less';
         } else {
             full.classList.add('hidden'); trunc.classList.remove('hidden'); btn.textContent = 'Read More';
+=======
+                             <div class="flex-1 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                                <span class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Stock ID</span>
+                                <span class="text-xs font-mono font-bold text-slate-700">${d.code}</span>
+                             </div>
+                             <div class="flex-1 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                                <span class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Serial Number</span>
+                                <span class="text-xs font-mono font-bold text-slate-700">${d.serial_no || 'NA'}</span>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function toggleEquipment(btn) {
+        const cell = btn.closest('.equipment-cell');
+        const trunc = cell.querySelector('.equipment-truncated');
+        const full = cell.querySelector('.equipment-full');
+        if (full.classList.contains('hidden')) {
+            full.classList.remove('hidden');
+            trunc.classList.add('hidden');
+            btn.textContent = 'Read Less';
+        } else {
+            full.classList.add('hidden');
+            trunc.classList.remove('hidden');
+            btn.textContent = 'Read More';
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         }
     }
 
@@ -634,13 +916,24 @@
 
     function exportItemMaster() {
         var locId = $('#location_filter').val();
+<<<<<<< HEAD
         var url   = "{{ route('item-masters.export') }}";
         if (locId) url += '?location_id=' + locId;
+=======
+        var url = "{{ route('item-masters.export') }}";
+        if (locId) {
+            url += "?location_id=" + locId;
+        }
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         window.location.href = url;
     }
 
     /* ================================================================
+<<<<<<< HEAD
        TICKET MODAL
+=======
+       TICKET MODAL LOGIC
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
     ================================================================ */
     var ticketItemData  = {};
     var ticketPriority  = 'medium';
@@ -648,12 +941,18 @@
 
     function openTicketModal(item) {
         ticketItemData = item;
+<<<<<<< HEAD
+=======
+
+        // Populate auto-filled card
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         document.getElementById('modal-code').textContent      = item.code      || '';
         document.getElementById('modal-serial').textContent    = item.serial_no || '';
         document.getElementById('modal-equipment').textContent = item.equipment || '';
         document.getElementById('modal-location').textContent  = item.location  || '';
         document.getElementById('modal-qty').textContent       = (item.qty || '') + ' ' + (item.uom || '');
         document.getElementById('ticket-item-id').value        = item.id;
+<<<<<<< HEAD
         document.getElementById('ticket-title').value          = 'Issue with ' + item.code + ' – ' + item.equipment;
         validateTicket();
 
@@ -661,6 +960,22 @@
         var modal   = document.getElementById('ticket-modal');
         overlay.style.display     = 'flex';
         document.body.style.overflow = 'hidden';
+=======
+
+        // Auto-suggest title (clear first so validateTicket works correctly)
+        var titleEl = document.getElementById('ticket-title');
+        titleEl.value = 'Issue with ' + item.code + ' – ' + item.equipment;
+
+        validateTicket();
+
+        // Show overlay
+        var overlay = document.getElementById('ticket-modal-overlay');
+        var modal   = document.getElementById('ticket-modal');
+        overlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+
+        // Animate in (double RAF ensures transition fires)
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         requestAnimationFrame(function () {
             requestAnimationFrame(function () {
                 modal.style.transform = 'scale(1)';
@@ -670,26 +985,42 @@
     }
 
     function closeTicketModal() {
+<<<<<<< HEAD
         var modal = document.getElementById('ticket-modal');
         modal.style.transform = 'scale(0.92)';
         modal.style.opacity   = '0';
         setTimeout(function () {
             document.getElementById('ticket-modal-overlay').style.display = 'none';
+=======
+        var overlay = document.getElementById('ticket-modal-overlay');
+        var modal   = document.getElementById('ticket-modal');
+        modal.style.transform = 'scale(0.92)';
+        modal.style.opacity   = '0';
+        setTimeout(function () {
+            overlay.style.display    = 'none';
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
             document.body.style.overflow = '';
             resetTicketModal();
         }, 220);
     }
 
+<<<<<<< HEAD
+=======
+    // Close on backdrop click
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
     document.getElementById('ticket-modal-overlay').addEventListener('click', function (e) {
         if (e.target === this) closeTicketModal();
     });
 
+<<<<<<< HEAD
     function toggleStatusReason() {
         var status = document.querySelector('input[name="equipment_status"]:checked').value;
         document.getElementById('equipment-status-reason-container').style.display =
             status === 'non-operational' ? 'block' : 'none';
     }
 
+=======
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
     function setIssueType(el) {
         document.querySelectorAll('.issue-chip').forEach(function (b) { b.classList.remove('active-chip'); });
         el.classList.add('active-chip');
@@ -703,6 +1034,7 @@
     }
 
     function countTicketChars() {
+<<<<<<< HEAD
         document.getElementById('ticket-char-count').textContent =
             document.getElementById('ticket-desc').value.length + ' / 1000';
     }
@@ -721,6 +1053,21 @@
 
         document.getElementById('ticket-submit-btn').disabled = !ok;
         document.getElementById('ticket-hint').textContent    = ok ? '✓ Ready to submit' : 'Fill in all required fields';
+=======
+        var len = document.getElementById('ticket-desc').value.length;
+        document.getElementById('ticket-char-count').textContent = len + ' / 1000';
+    }
+
+    function validateTicket() {
+        var title = document.getElementById('ticket-title').value.trim();
+        var desc  = document.getElementById('ticket-desc').value.trim();
+        var ok    = title.length > 0 && desc.length > 0;
+        var btn   = document.getElementById('ticket-submit-btn');
+        btn.disabled = !ok;
+        document.getElementById('ticket-hint').textContent = ok
+            ? '✓ Ready to submit'
+            : 'Fill in title and description';
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
     }
 
     function handleImageSelect(input) {
@@ -730,6 +1077,7 @@
         var prevCont = document.getElementById('ticket-image-preview-container');
         var container= document.getElementById('ticket-image-container');
 
+<<<<<<< HEAD
         errSpan.style.display  = 'none';
         container.style.border = '1.5px dashed #cbd5e1';
 
@@ -753,6 +1101,39 @@
         } else {
             nameSpan.textContent   = 'Click to upload or drag & drop';
             nameSpan.style.color   = '#94a3b8';
+=======
+        errSpan.style.display    = 'none';
+        container.style.border   = '1.5px dashed #cbd5e1';
+
+        if (input.files && input.files[0]) {
+            var file = input.files[0];
+
+            // 1. Check size (2MB limit)
+            if (file.size > 2 * 1024 * 1024) {
+                errSpan.textContent = 'File too large (Max 2MB). Selected: ' + (file.size/(1024*1024)).toFixed(2) + 'MB';
+                errSpan.style.display = 'block';
+                container.style.border = '1.5px dashed #f43f5e';
+                input.value = ''; // clear it
+                nameSpan.textContent = 'Click to upload or drag & drop';
+                nameSpan.style.color = '#94a3b8';
+                prevCont.style.display = 'none';
+                return;
+            }
+
+            // 2. Preview
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                prevCont.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+
+            nameSpan.textContent = file.name;
+            nameSpan.style.color = '#1e293b';
+        } else {
+            nameSpan.textContent = 'Click to upload or drag & drop';
+            nameSpan.style.color = '#94a3b8';
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
             prevCont.style.display = 'none';
         }
     }
@@ -766,18 +1147,26 @@
     function submitTicket() {
         var title    = document.getElementById('ticket-title').value.trim();
         var desc     = document.getElementById('ticket-desc').value.trim();
+<<<<<<< HEAD
         var cName    = document.getElementById('ticket-contact-name').value.trim();
         var cEmail   = document.getElementById('ticket-contact-email').value.trim();
         var cPhone   = document.getElementById('ticket-contact-phone').value.trim();
         var itemId   = document.getElementById('ticket-item-id').value;
         var eqStatus = document.querySelector('input[name="equipment_status"]:checked')?.value || 'operational';
         var eqReason = document.getElementById('equipment-status-reason').value.trim();
+=======
+        var assignee = document.getElementById('ticket-assignee').value || null;
+        var contactPerson = document.getElementById('ticket-contact-person').value.trim() || null;
+        var itemId   = document.getElementById('ticket-item-id').value;
+        var imageInput = document.getElementById('ticket-image');
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         var btn      = document.getElementById('ticket-submit-btn');
 
         btn.disabled    = true;
         btn.textContent = 'Submitting…';
 
         var formData = new FormData();
+<<<<<<< HEAD
         formData.append('item_master_id',           itemId);
         formData.append('title',                    title);
         formData.append('issue_type',               ticketIssueType);
@@ -795,6 +1184,26 @@
             method : 'POST',
             headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}', 'Accept': 'application/json' },
             body   : formData,
+=======
+        formData.append('item_master_id', itemId);
+        formData.append('title', title);
+        formData.append('issue_type', ticketIssueType);
+        formData.append('priority', ticketPriority);
+        formData.append('description', desc);
+        formData.append('assignee', assignee);
+        formData.append('contact_person', contactPerson);
+        if (imageInput.files[0]) {
+            formData.append('image', imageInput.files[0]);
+        }
+
+        fetch('{{ route("tickets.store") }}', {
+            method : 'POST',
+            headers: {
+                'X-CSRF-TOKEN' : '{{ csrf_token() }}',
+                'Accept'       : 'application/json',
+            },
+            body: formData,
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         })
         .then(function (r) { return r.json(); })
         .then(function (data) {
@@ -805,6 +1214,7 @@
                 return;
             }
 
+<<<<<<< HEAD
             var rows = [
                 ['Ticket ref',        data.ref],
                 ['Item code',         ticketItemData.code],
@@ -816,6 +1226,20 @@
                 ['Contact Email',     cEmail],
                 ['Contact Phone',     cPhone],
                 ['Equipment Status',  eqStatus.charAt(0).toUpperCase() + eqStatus.slice(1)],
+=======
+            var ref = data.ref;
+
+            // Build summary card
+            var rows = [
+                ['Ticket ref',  ref],
+                ['Item code',   ticketItemData.code],
+                ['Equipment',   ticketItemData.equipment],
+                ['Location',    ticketItemData.location],
+                ['Issue type',  ticketIssueType.charAt(0).toUpperCase() + ticketIssueType.slice(1)],
+                ['Priority',    ticketPriority.charAt(0).toUpperCase() + ticketPriority.slice(1)],
+                ['Contact Pers', contactPerson || '—'],
+                ['Assigned to', assignee || 'Unassigned'],
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
             ];
 
             document.getElementById('ticket-summary-card').innerHTML = rows.map(function (r) {
@@ -826,11 +1250,24 @@
             }).join('');
 
             document.getElementById('ticket-success-msg').textContent =
+<<<<<<< HEAD
                 data.ref + ' created for item ' + ticketItemData.code + '.';
 
             document.getElementById('ticket-form-view').style.display    = 'none';
             document.getElementById('ticket-success-view').style.display = 'flex';
 
+=======
+                ref + ' created for item ' + ticketItemData.code + '.';
+
+            // Switch to success view
+            document.getElementById('ticket-form-view').style.display    = 'none';
+            document.getElementById('ticket-success-view').style.display = 'flex';
+
+            // ── Fire real-time notification bell immediately ──────────
+            // data.ticket is the full formatted ticket from the server.
+            // If the function exists (layout loaded), call it now rather
+            // than waiting for the next 20-second poll cycle.
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
             if (typeof window.notifTicketSubmitted === 'function' && data.ticket) {
                 window.notifTicketSubmitted(data.ticket);
             }
@@ -850,26 +1287,39 @@
         document.getElementById('ticket-success-view').style.display = 'none';
         document.getElementById('ticket-title').value                = '';
         document.getElementById('ticket-desc').value                 = '';
+<<<<<<< HEAD
         document.getElementById('ticket-contact-name').value         = "{{ auth()->user()->name }}";
         document.getElementById('ticket-contact-email').value        = "{{ auth()->user()->email }}";
         document.getElementById('ticket-contact-phone').value        = "{{ auth()->user()->phone }}";
+=======
+        document.getElementById('ticket-assignee').value             = '';
+        // Note: ticket-contact-person is a hidden field now, no need to reset its value as it's fixed for the user
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         document.getElementById('ticket-char-count').textContent     = '0 / 1000';
         document.getElementById('ticket-image').value                = '';
         document.getElementById('ticket-image-name').textContent     = 'Click to upload or drag & drop';
         document.getElementById('ticket-image-name').style.color     = '#94a3b8';
+<<<<<<< HEAD
         document.getElementById('ticket-image-preview-container').style.display = 'none';
 
         document.querySelectorAll('.issue-chip').forEach(function (b) { b.classList.remove('active-chip'); });
+=======
+
+        document.querySelectorAll('.issue-chip').forEach(function (b)  { b.classList.remove('active-chip'); });
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         document.querySelector('.issue-chip[data-val="damage"]').classList.add('active-chip');
 
         document.querySelectorAll('.pri-chip').forEach(function (b) { b.classList.remove('active-pri'); });
         document.querySelector('.pri-chip[data-val="medium"]').classList.add('active-pri');
 
+<<<<<<< HEAD
         var eqOp = document.querySelector('input[name="equipment_status"][value="operational"]');
         if (eqOp) eqOp.checked = true;
         document.getElementById('equipment-status-reason').value              = '';
         document.getElementById('equipment-status-reason-container').style.display = 'none';
 
+=======
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         ticketPriority  = 'medium';
         ticketIssueType = 'damage';
         validateTicket();

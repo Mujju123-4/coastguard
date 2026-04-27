@@ -12,7 +12,11 @@
             <input id="email"
                 class="block w-full rounded-md border-0 py-2.5 px-3 bg-white/5 text-white shadow-sm ring-1 ring-inset ring-white/20 focus:ring-2 focus:ring-inset focus:ring-orange-500 sm:text-sm sm:leading-6 placeholder:text-gray-400 transition-all"
                 type="text" name="email" :value="old('email')" required autofocus autocomplete="username"
+<<<<<<< HEAD
                 placeholder="" />
+=======
+                placeholder="officer@indiancoastguard.gov.in" />
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
             <x-input-error :messages="$errors->get('email')" class="mt-2 text-rose-400" />
         </div>
 

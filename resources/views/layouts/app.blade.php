@@ -114,10 +114,28 @@
                     @endcan
 
                      
+<<<<<<< HEAD
                    
                  
                     
                     <a href="{{ route('user-manuals.index') }}" class="flex items-center px-4 py-3 {{ request()->routeIs('user-manuals.*') ? 'bg-orange-600/20 text-orange-400 border border-orange-500/30' : 'text-slate-300 hover:bg-white/5 hover:text-white' }} rounded-lg transition-colors">
+=======
+                    
+                 
+                    
+                    <a href="{{ route('user-manuals.index') }}" class="flex items-center px-4 py-3 {{ request()->routeIs('user-manuals.*') ? 'bg-orange-600/20 text-orange-400 border border-orange-500/30' : 'text-slate-300 hover:bg-white/5 hover:text-white' }} rounded-lg transition-colors">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                        User Manuals
+                    </a>
+
+          
+                    
+
+                    <div class="pt-4"></div>
+                    <a href="{{ route('profile.edit') }}" class="flex items-center px-4 py-3 {{ request()->routeIs('profile.edit') ? 'bg-orange-600/20 text-orange-400 border border-orange-500/30' : 'text-slate-300 hover:bg-white/5 hover:text-white' }} rounded-lg transition-colors">
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                         <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                         </svg>
@@ -153,16 +171,23 @@
             <!-- Main Content Area -->
             <div class="flex-1 flex flex-col overflow-hidden">
                 <!-- Top Header -->
+<<<<<<< HEAD
                 <header class="h-16 flex-shrink-0 bg-white shadow-sm flex items-center justify-between px-8 z-10 border-b border-slate-200" style="position:relative;">
+=======
+                <header class="h-16 bg-white shadow-sm flex items-center justify-between px-8 z-10 border-b border-slate-200" style="position:relative;">
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                     <div class="flex items-center">
                         <h1 class="text-xl font-bold text-slate-800 tracking-tight">Command Center</h1>
                     </div>
                     <div class="flex items-center space-x-3">
+<<<<<<< HEAD
                         <button onclick="toggleFullScreen()" class="text-slate-400 hover:text-orange-500 hover:bg-orange-50 p-2 rounded-xl transition-colors focus:outline-none" title="Toggle Fullscreen">
                             <svg id="fullscreen-icon" class="w-5 h-5 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
                             </svg>
                         </button>
+=======
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                         {{-- Notification bell (functional) — rendered by the block below @stack('scripts') --}}
                         <div id="notif-bell-slot"></div>
                         <div class="h-8 w-px bg-slate-200"></div>
@@ -230,6 +255,7 @@
 
         @stack('scripts')
 
+<<<<<<< HEAD
     <script>
         function toggleFullScreen() {
             if (!document.fullscreenElement) {
@@ -244,6 +270,8 @@
         }
     </script>
 
+=======
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
     {{-- ===== TICKET NOTIFICATION MODAL ===== --}}
     <style>
         /* ── Filter bar pills ───────────────────────────────────────── */
@@ -581,6 +609,7 @@
                                 </div>
                                 <span id="tc-user-location" style="font-size:0.65rem;font-weight:700;background:#e0f2fe;color:#0369a1;padding:3px 10px;border-radius:999px;"></span>
                             </div>
+<<<<<<< HEAD
                             <div id="tc-contact-wrapper" style="margin-top:12px; padding:12px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:1rem; display:none;">
                                 <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; border-bottom:1px solid #f1f5f9; padding-bottom:6px;">
                                     <div style="display:flex; align-items:center; gap:0.4rem;">
@@ -602,6 +631,11 @@
                                         </div>
                                     </div>
                                 </div>
+=======
+                            <div id="tc-contact-wrapper" style="margin-top:8px; padding-top:8px; border-top:1px solid #fef3c7; display:none;">
+                                <p style="font-size:0.6rem;font-weight:700;color:#92400e;text-transform:uppercase;letter-spacing:.1em;margin:0 0 4px;">Whom to contact</p>
+                                <p id="tc-contact-person" style="font-size:0.82rem;font-weight:700;color:#1e293b;margin:0;"></p>
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                             </div>
                         </div>
 
@@ -650,6 +684,7 @@
         /* ── Config ────────────────────────────────────────────────── */
         var POLL_MS      = 20000;
         var CHAT_POLL    = 8000;
+<<<<<<< HEAD
         var LS_KEY       = 'notif_last_seen_at_{{ auth()->id() }}';
         var LS_REPLY_KEY = 'notif_last_reply_seen_at_{{ auth()->id() }}';   // non-admin: tracks when user last saw a reply
         var CSRF         = (document.querySelector('meta[name="csrf-token"]') || {getAttribute:function(){return '';}}).getAttribute('content');
@@ -665,6 +700,19 @@
         var lastReplySeenAt = localStorage.getItem(LS_REPLY_KEY) || defaultTs;
         var allTickets      = [];
         var prevUnread      = -1; // -1 indicates first load to prevent ringing on page refresh
+=======
+        var LS_KEY       = 'notif_last_seen_at';
+        var LS_REPLY_KEY = 'notif_last_reply_seen_at';   // non-admin: tracks when user last saw a reply
+        var CSRF         = (document.querySelector('meta[name="csrf-token"]') || {getAttribute:function(){return '';}}).getAttribute('content');
+        var NOTIF_URL    = '{{ route("tickets.notifications") }}';
+        var TICKETS_URL  = '{{ url("tickets") }}';
+        var IS_ADMIN     = {{ auth()->user()->hasRole('Admin') ? 'true' : 'false' }};
+
+        var lastSeenAt      = localStorage.getItem(LS_KEY)       || '1970-01-01T00:00:00Z';
+        var lastReplySeenAt = localStorage.getItem(LS_REPLY_KEY) || '1970-01-01T00:00:00Z';
+        var allTickets      = [];
+        var prevUnread      = 0;
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         var chatTicketId    = null;
         var chatPollTimer   = null;
         var modalOpen       = false;
@@ -679,7 +727,11 @@
         var filterUnread   = false;
         var locationsPopulated = false;
 
+<<<<<<< HEAD
         /* ── Web Audio Notification Sound (Clear Bell Ding) ─────── */
+=======
+        /* ── Web Audio Notification Sound (Ringtone on Mobile) ─────── */
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         var audioCtx = null;
         function playNotificationSound() {
             try {
@@ -692,18 +744,42 @@
                     o.connect(g); g.connect(audioCtx.destination);
                     o.type = 'sine'; o.frequency.setValueAtTime(f, s);
                     g.gain.setValueAtTime(0, s);
+<<<<<<< HEAD
                     g.gain.linearRampToValueAtTime(v, s + 0.02);
+=======
+                    g.gain.linearRampToValueAtTime(v, s + 0.01);
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                     g.gain.exponentialRampToValueAtTime(0.0001, s + d);
                     o.start(s); o.stop(s + d);
                 }
                 
                 var t = audioCtx.currentTime;
+<<<<<<< HEAD
                 // A clean, bright bell chord (Ding)
                 note(1046.50, t, 1.5, 0.3); // C6
                 note(1318.51, t, 1.5, 0.2); // E6
                 note(1567.98, t, 1.5, 0.1); // G6
                 
                 if (navigator.vibrate) navigator.vibrate([150]);
+=======
+                var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                
+                if (isMobile) {
+                    // Persistent Mobile Ringtone (Ding-Ding-Ding pattern)
+                    for (var i = 0; i < 4; i++) {
+                        var offset = i * 0.45;
+                        note(1318, t + offset,        0.3, 0.35); // E6
+                        note(1046, t + offset + 0.15, 0.3, 0.25); // C6
+                    }
+                    if (navigator.vibrate) navigator.vibrate([200, 100, 200, 100, 200]);
+                } else {
+                    // Desktop Chime
+                    note(880, t, 0.4, 0.2); 
+                    note(1174, t + 0.1, 0.5, 0.15); 
+                    note(1396, t + 0.2, 0.6, 0.12);
+                    note(1760, t + 0.3, 0.8, 0.1);
+                }
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
             } catch (e) { console.error('Sound error:', e); }
         }
 
@@ -794,9 +870,12 @@
                 if (IS_ADMIN) {
                     html += '<div style="display:flex;align-items:center;gap:3px;margin-top:2px;">';
                     html +=   '<span style="font-size:.68rem;font-weight:600;color:#94a3b8;">'+esc(t.raised_by)+'</span>';
+<<<<<<< HEAD
                     if (t.contact_name && t.contact_name !== t.raised_by) {
                         html += '<span style="font-size:.6rem;color:#64748b;">(Contact: '+esc(t.contact_name)+')</span>';
                     }
+=======
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                     html +=   '<span style="font-size:.58rem;background:rgba(14,165,233,.15);color:#7dd3fc;padding:0 5px;border-radius:999px;">'+esc(t.raised_by_location)+'</span>';
                     html += '</div>';
                 }
@@ -883,9 +962,13 @@
                     populateChatHeader(t);
                     renderMessages(data.replies || [], t);
                 }
+<<<<<<< HEAD
                 if (CAN_SEND_MSG && t.status !== 'closed') {
                     document.getElementById('tm-reply-bar').style.display = 'flex';
                 }
+=======
+                document.getElementById('tm-reply-bar').style.display = 'flex';
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                 var ts = document.getElementById('tm-status-text');
                 if (ts) { var now = new Date(); ts.textContent = 'Updated '+now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0')+':'+now.getSeconds().toString().padStart(2,'0'); }
             })
@@ -907,7 +990,11 @@
             var resolveBtn = document.getElementById('tc-resolve-btn');
             var replyBar = document.getElementById('tm-reply-bar');
             
+<<<<<<< HEAD
             if (t.status === 'closed' || !CAN_SEND_MSG) {
+=======
+            if (t.status === 'closed') {
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                 if (resolveBtn) resolveBtn.style.display = 'none';
                 if (replyBar) replyBar.style.display = 'none';
             } else {
@@ -927,6 +1014,7 @@
                 var lc = document.getElementById('tc-user-location'); if(lc) lc.textContent = '📍 '+t.raised_by_location;
                 
                 var cw = document.getElementById('tc-contact-wrapper');
+<<<<<<< HEAD
                 var cn = document.getElementById('tc-contact-name');
                 var ce = document.getElementById('tc-contact-email');
                 var cp = document.getElementById('tc-contact-phone');
@@ -935,6 +1023,12 @@
                         cn.textContent = t.contact_name;
                         ce.textContent = t.contact_email || '';
                         cp.textContent = t.contact_phone || '';
+=======
+                var cp = document.getElementById('tc-contact-person');
+                if (cw && cp) {
+                    if (t.contact_person && t.contact_person !== '—') {
+                        cp.textContent = t.contact_person;
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                         cw.style.display = 'block';
                     } else {
                         cw.style.display = 'none';
@@ -1038,7 +1132,11 @@
         };
 
         window.tmSendReply = function() {
+<<<<<<< HEAD
             if (!chatTicketId || !CAN_SEND_MSG) return;
+=======
+            if (!chatTicketId) return;
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
             var input = document.getElementById('tm-reply-input');
             var imgInput = document.getElementById('tm-reply-image');
             var msg   = input.value.trim();
@@ -1083,7 +1181,11 @@
 
         /* ── Close/Resolve Ticket ──────────────────────────────────── */
         window.tmCloseTicket = function() {
+<<<<<<< HEAD
             if (!chatTicketId || !CAN_SEND_MSG || !confirm('Are you sure you want to resolve and close this ticket?')) return;
+=======
+            if (!chatTicketId || !confirm('Are you sure you want to resolve and close this ticket?')) return;
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
             
             var btn = document.getElementById('tc-resolve-btn');
             if (btn) { btn.disabled = true; btn.textContent = 'Closing...'; }
@@ -1301,10 +1403,15 @@
                         return t.latest_reply_at && new Date(t.latest_reply_at) > new Date(lastReplySeenAt);
                     }).length;
                 }
+<<<<<<< HEAD
                 
                 var isFirstLoad = (prevUnread === -1);
                 if (!isFirstLoad && unread > prevUnread) { ringBell(); playNotificationSound(); }
                 
+=======
+
+                if (unread > prevUnread) { ringBell(); playNotificationSound(); }
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                 prevUnread = unread;
                 updateBadge(unread);
                 if (modalOpen) renderSidebar(allTickets);
@@ -1346,8 +1453,12 @@
         /* ── Called from index.blade.php on ticket submit ──────────── */
         window.notifTicketSubmitted = function(ticketData) {
             allTickets.unshift(ticketData);
+<<<<<<< HEAD
             if (prevUnread !== -1) prevUnread++;
             else prevUnread = 1;
+=======
+            prevUnread++;
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
             updateBadge(prevUnread);
             ringBell(); playNotificationSound();
             if (modalOpen) renderSidebar(allTickets);

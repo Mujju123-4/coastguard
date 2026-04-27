@@ -12,7 +12,11 @@ class ItemMaster extends Model
     protected $fillable = [
         'location_id', 'code', 'serial_no',
         'equipment', 'qty', 'uom', 'remarks',
+<<<<<<< HEAD
         'status', 'status_reason','serviced_date'
+=======
+        'status', 'status_reason',
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
     ];
 
     public function location(): \Illuminate\Database\Eloquent\Relations\BelongsTo

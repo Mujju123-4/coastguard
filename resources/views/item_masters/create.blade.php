@@ -87,6 +87,7 @@
                     @enderror
                 </div>
 
+<<<<<<< HEAD
                 <!--<div class="mb-6">-->
                 <!--    <label class="block text-sm font-medium text-slate-700 mb-2">Item Status</label>-->
                 <!--    <div class="flex items-center space-x-6">-->
@@ -114,10 +115,42 @@
                         placeholder="Please explain why the item is non-operational..."
                         class="mt-1 block w-full border-slate-300 rounded-md shadow-sm focus:ring-rose-500 focus:border-rose-500 bg-rose-50/30 text-slate-800 placeholder-slate-400">{{ old('status_reason') }}</textarea>
                     @error('status_reason')
+=======
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-slate-700 mb-2">Item Status</label>
+                    <div class="flex items-center space-x-6">
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="radio" name="status" value="operational" {{ old('status', 'operational') == 'operational' ? 'checked' : '' }}
+                                class="form-radio text-green-600 focus:ring-green-500 border-slate-300 transition-all hover:border-green-400"
+                                onclick="toggleReason(false)">
+                            <span class="ml-2 text-sm font-semibold text-slate-700">Operational</span>
+                        </label>
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="radio" name="status" value="non-operational" {{ old('status') == 'non-operational' ? 'checked' : '' }}
+                                class="form-radio text-rose-600 focus:ring-rose-500 border-slate-300 transition-all hover:border-rose-400"
+                                onclick="toggleReason(true)">
+                            <span class="ml-2 text-sm font-semibold text-slate-700">Non-operational</span>
+                        </label>
+                    </div>
+                    @error('status')
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                         <p class="text-red-600 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
 
+<<<<<<< HEAD
+=======
+                <div class="mb-4 {{ old('status') == 'non-operational' ? '' : 'hidden' }}" id="reason-container">
+                    <label for="status_reason" class="block text-sm font-medium text-slate-700 italic">Reason for Non-operational status</label>
+                    <textarea name="status_reason" id="status_reason" rows="2"
+                        placeholder="Please explain why the item is non-operational..."
+                        class="mt-1 block w-full border-slate-300 rounded-md shadow-sm focus:ring-rose-500 focus:border-rose-500 bg-rose-50/30 text-slate-800 placeholder-slate-400">{{ old('status_reason') }}</textarea>
+                    @error('status_reason')
+                        <p class="text-red-600 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                 <script>
                     function toggleReason(show) {
                         const container = document.getElementById('reason-container');

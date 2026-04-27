@@ -22,11 +22,14 @@ class TicketController extends Controller
             'image'          => 'nullable|image|max:2048',
             'assignee'       => 'nullable|string|max:255',
             'contact_person' => 'nullable|string|max:255',
+<<<<<<< HEAD
             'contact_name'   => 'required|string|max:255',
             'contact_email'  => 'required|email|max:255',
             'contact_phone'  => 'required|string|max:255',
             'equipment_status'        => 'required|in:operational,non-operational',
             'equipment_status_reason' => 'nullable|required_if:equipment_status,non-operational|string',
+=======
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         ]);
 
         $imagePath = null;
@@ -48,6 +51,7 @@ class TicketController extends Controller
             'image_path'     => $imagePath,
             'assignee'       => $request->assignee ?: null,
             'contact_person' => $request->contact_person ?: null,
+<<<<<<< HEAD
             'contact_name'   => $request->contact_name,
             'contact_email'  => $request->contact_email,
             'contact_phone'  => $request->contact_phone,
@@ -64,6 +68,11 @@ class TicketController extends Controller
             ]);
         }
 
+=======
+            'status'         => 'open',
+        ]);
+
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         $ticket->load(['item', 'raisedBy.location']);
 
         return response()->json([
@@ -191,7 +200,11 @@ class TicketController extends Controller
         $ticket = Ticket::findOrFail($id);
         $user   = auth()->user();
 
+<<<<<<< HEAD
         if (! $user->hasAnyRole(['Super Admin', 'Location User', 'Location Users'])) {
+=======
+        if (! $user->hasAnyRole(['Admin', 'Superadmin', 'Super Admin']) && $ticket->raised_by !== $user->id) {
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
             abort(403, 'Unauthorized');
         }
 
@@ -241,7 +254,11 @@ class TicketController extends Controller
         $ticket = Ticket::with(['item', 'raisedBy.location'])->findOrFail($id);
         $user = auth()->user();
 
+<<<<<<< HEAD
         if (!$user->hasAnyRole(['Super Admin', 'Location User', 'Location Users'])) {
+=======
+        if (!$user->hasAnyRole(['Admin', 'Superadmin', 'Super Admin']) && $ticket->raised_by !== $user->id) {
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
             return response()->json(['success' => false, 'message' => 'Unauthorized'], 403);
         }
 
@@ -290,9 +307,12 @@ class TicketController extends Controller
             'status'              => $t->status,
             'description'         => $t->description,
             'contact_person'     => $t->contact_person ?? '',
+<<<<<<< HEAD
             'contact_name'       => $t->contact_name ?? '',
             'contact_email'      => $t->contact_email ?? '',
             'contact_phone'      => $t->contact_phone ?? '',
+=======
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
             'image_url'           => $t->image_path ? asset('storage/' . $t->image_path) : null,
             'assignee'            => $t->assignee ?? 'Unassigned',
             'equipment'           => $t->item?->equipment ?? '',
@@ -301,8 +321,11 @@ class TicketController extends Controller
             'raised_by_email'     => $t->raisedBy->email ?? '',
             'raised_by_location'  => $t->raisedBy->location?->name ?? 'No location',
             'replies_count'       => $t->replies_count ?? $t->replies()->count(),
+<<<<<<< HEAD
             'equipment_status'    => $t->equipment_status ?? 'operational',
             'equipment_status_reason' => $t->equipment_status_reason ?? '',
+=======
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
             'latest_reply_at'     => $t->replies_max_created_at
                                        ? \Carbon\Carbon::parse($t->replies_max_created_at)->toISOString()
                                        : null,

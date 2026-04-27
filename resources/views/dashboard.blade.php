@@ -1,11 +1,16 @@
 
 <x-app-layout>
+<<<<<<< HEAD
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 mt-2">
+=======
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 mt-2">
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         <!-- System Stats Cards -->
         <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 flex items-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer border-l-4 border-l-indigo-600">
             <div class="p-4 bg-indigo-50 text-indigo-600 rounded-xl mr-4 group-hover:scale-110 transition-transform duration-300">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+<<<<<<< HEAD
                 </svg>
             </div>
             <a href="{{route('users.index')}}">
@@ -77,6 +82,41 @@
         </div>
 
         <!-- Resolved Tickets -->
+=======
+                </svg>
+            </div>
+            <div>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Total Personnel</p>
+                <p class="text-2xl font-black text-slate-900">{{ number_format($stats['users']) }}</p>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 flex items-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer border-l-4 border-l-orange-500">
+            <div class="p-4 bg-orange-50 text-orange-600 rounded-xl mr-4 group-hover:scale-110 transition-transform duration-300">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                </svg>
+            </div>
+            <div>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Item Master</p>
+                <p class="text-2xl font-black text-slate-900">{{ number_format($stats['items']) }}</p>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 flex items-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer border-l-4 border-l-slate-800">
+            <div class="p-4 bg-slate-50 text-slate-800 rounded-xl mr-4 group-hover:scale-110 transition-transform duration-300">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+            </div>
+            <div>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Total Locations</p>
+                <p class="text-2xl font-black text-slate-900">{{ number_format($stats['locations']) }}</p>
+            </div>
+        </div>
+
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 flex items-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer border-l-4 border-l-emerald-500">
             <div class="p-4 bg-emerald-50 text-emerald-600 rounded-xl mr-4 group-hover:scale-110 transition-transform duration-300">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -84,8 +124,13 @@
                 </svg>
             </div>
             <div>
+<<<<<<< HEAD
                 <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Resolved Tickets</p>
                 <p class="text-2xl font-black text-slate-900">{{ number_format($ticketStats['resolved']) }}</p>
+=======
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Latest Item Code</p>
+                <p class="text-2xl font-black text-slate-900">{{ $stats['last_item']->code ?? 'N/A' }}</p>
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
             </div>
         </div>
     </div>
@@ -218,11 +263,17 @@
 
                                     @if ($notice->file_path && $isImage)
                                         <div
+<<<<<<< HEAD
                                             class="w-full md:w-32 h-20 bg-white rounded border border-slate-200 flex-shrink-0 overflow-hidden cursor-pointer group"
                                             onclick="openImageModal('{{ asset($notice->file_path) }}')">
                                             <img src="{{ asset($notice->file_path) }}"
                                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                                                 title="Click to zoom">
+=======
+                                            class="w-full md:w-32 h-20 bg-white rounded border border-slate-200 flex-shrink-0 overflow-hidden">
+                                            <img src="{{ asset($notice->file_path) }}"
+                                                class="w-full h-full object-cover">
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                                         </div>
                                     @endif
 

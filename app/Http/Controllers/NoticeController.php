@@ -9,7 +9,10 @@ class NoticeController extends Controller
 {
     public function index(Request $request)
     {
+<<<<<<< HEAD
        
+=======
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         if ($request->ajax()) {
             $query = Notice::query();
             

@@ -118,7 +118,11 @@ class ItemMasterController extends Controller implements HasMiddleware
         $handle = fopen('php://memory', 'w');
 
         // CSV Header
+<<<<<<< HEAD
         fputcsv($handle, ['Location', 'Code', 'Serial No', 'Equipment', 'Qty', 'UoM', 'Serviced Date', 'Remarks', 'Status', 'Reason']);
+=======
+        fputcsv($handle, ['Location', 'Code', 'Serial No', 'Equipment', 'Qty', 'UoM', 'Remarks', 'Status', 'Reason']);
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
 
         foreach ($items as $item) {
             fputcsv($handle, [
@@ -128,7 +132,10 @@ class ItemMasterController extends Controller implements HasMiddleware
                 $item->equipment,
                 $item->qty,
                 $item->uom,
+<<<<<<< HEAD
                 $item->serviced_date ? \Carbon\Carbon::parse($item->serviced_date)->format('Y-m-d') : '',
+=======
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                 $item->remarks ?? '',
                 ucfirst($item->status),
                 $item->status_reason ?? ''
@@ -186,6 +193,7 @@ class ItemMasterController extends Controller implements HasMiddleware
                     return '<span class="font-bold text-slate-900">' . $row->qty . '</span>';
                 })
 
+<<<<<<< HEAD
                 ->addColumn('serviced_date', function ($row) {
                     if (!$row->serviced_date) {
                         return '<span class="text-slate-400 italic text-xs">Not Serviced</span>';
@@ -214,6 +222,29 @@ class ItemMasterController extends Controller implements HasMiddleware
                                     </svg>
                                  </a>';
                     }
+=======
+                ->addColumn('uom', function ($row) {
+                    return '<span class="ml-1 text-[10px] font-bold text-slate-400 border border-slate-200 px-1.5 py-0.5 rounded uppercase font-mono">'
+                        . e($row->uom)
+                        . '</span>';
+                })
+
+                ->addColumn('action', function ($row) {
+                    $btn = '<div class="flex items-center justify-end space-x-2">';
+
+                    // ── Edit ──────────────────────────────────────────────
+                    if (auth()->user()->can('edit item masters')) {
+                        $btn .= '<a href="' . route('item-masters.edit', $row->id) . '"
+                                    class="p-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all duration-200"
+                                    title="Edit Item">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5
+                                                 m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                    </svg>
+                                 </a>';
+                    }
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
 
                     // ── Delete ────────────────────────────────────────────
                     if (auth()->user()->can('delete item masters')) {
@@ -276,7 +307,11 @@ class ItemMasterController extends Controller implements HasMiddleware
                     return $btn;
                 })
 
+<<<<<<< HEAD
                 ->rawColumns(['location_name', 'qty', 'uom', 'serviced_date', 'status', 'action'])
+=======
+                ->rawColumns(['location_name', 'qty', 'uom', 'status', 'action'])
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
                 ->make(true);
         }
 
@@ -317,9 +352,14 @@ class ItemMasterController extends Controller implements HasMiddleware
             'qty'         => 'required|integer|min:0',
             'uom'         => 'required|string|in:kg,pc,pcs,set,sets',
             'remarks'     => 'nullable|string',
+<<<<<<< HEAD
             'status'      => 'nullable|in:operational,non-operational',
             'status_reason' => 'nullable|required_if:status,non-operational|string',
             'serviced_date' => 'nullable|date',
+=======
+            'status'      => 'required|in:operational,non-operational',
+            'status_reason' => 'nullable|required_if:status,non-operational|string',
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         ]);
 
         ItemMaster::create($request->all());
@@ -377,9 +417,14 @@ class ItemMasterController extends Controller implements HasMiddleware
             'qty'         => 'required|integer|min:0',
             'uom'         => 'required|string|in:kg,pc,pcs,set,sets',
             'remarks'     => 'nullable|string',
+<<<<<<< HEAD
             'status'      => 'nullable|in:operational,non-operational',
             'status_reason' => 'nullable|required_if:status,non-operational|string',
             'serviced_date' => 'nullable|date',
+=======
+            'status'      => 'required|in:operational,non-operational',
+            'status_reason' => 'nullable|required_if:status,non-operational|string',
+>>>>>>> 89a3400d8febfa7c0af4cd0221386851a7d4c933
         ]);
 
         $itemMaster->update($request->all());
